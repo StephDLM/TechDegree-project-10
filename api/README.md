@@ -1,0 +1,1 @@
+Created a REST API using express. This API administers a school database by containing information about users and courses in a database and is able to be accessed by students through routes and MODELS. I added an auth-user middleware to authenticate requests from the endpoint apo confirm that the correct permissions are granted and that the data is validated.
