@@ -2,7 +2,7 @@
 
 const { sequelize, models } = require('./models');
 const routes = require('./routes')
-
+const cors = require('cors');
 
 // load modules
 const express = require('express');
