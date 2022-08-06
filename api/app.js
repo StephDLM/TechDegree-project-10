@@ -4,9 +4,17 @@ const { sequelize, models } = require('./models');
 const routes = require('./routes')
 const cors = require('cors');
 
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true
+}
+
+app.use(cors(corsOptions));
+
 // load modules
 const express = require('express');
 const morgan = require('morgan');
+
 
 // variable to enable global error logging
 const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'true';
@@ -31,6 +39,7 @@ app.use('/api', routes);
     throw error;
   }
 })();
+
 // setup morgan which gives us http request logging
 app.use(morgan('dev'));
 
@@ -73,9 +82,3 @@ console.log('Testing the connection to the database...');
 // Test the connection to the database: 
 console.log('Testing the connection to the database...');
 
-const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true
-}
-
-app.use(cors(corsOptions));
