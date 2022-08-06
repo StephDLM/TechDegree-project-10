@@ -72,3 +72,10 @@ console.log('Testing the connection to the database...');
 
 // Test the connection to the database: 
 console.log('Testing the connection to the database...');
+
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true
+}
+
+app.use(cors(corsOptions));
