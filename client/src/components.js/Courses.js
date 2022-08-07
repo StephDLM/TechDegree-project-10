@@ -1,27 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function CourseDetail() {
-
-    useEffect(() => {
 // Similar to componentDidMount and componentDidUpdate
 //resource: https://www.javascripttutorial.net/javascript-fetch-api/#:~:text=The%20Fetch%20API%20allows%20you,resolve%20into%20the%20actual%20data.
+    useEffect(() => {
         async function fetchURL() {
             try {
                 const res = await fetch("http://localhost:5000/courses");
                 console.log(res.status); // 200
                 if (res.status === 200) {
                     return await res.json(); //fetches res.json from the server
-                 } else {
-                    // res.status === 500
-                }
+                 }
             } catch (error) {
                 console.log("error");
             }}
             fetchURL();
-    } 
-        )
-;
-
+    });
 
     return (
         <body>

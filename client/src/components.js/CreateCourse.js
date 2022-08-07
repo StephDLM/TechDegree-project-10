@@ -1,10 +1,4 @@
-// export default class CreateCourse extends Component {
-
-//     state = {}
+export default function CourseDetail() {
+ 
     
-//     render(){
-    
-//     } 
-    
-//     return()
-// }
+}

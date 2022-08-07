@@ -3,11 +3,6 @@ import './App.css';
 import { Provider } from './components.js/Context';
 import { Consumer } from './components.js/Context';
 
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   Switch
-// } from 'react-router-dom';
 
 // import Header from './components/Header';
 // import Public from './components/Public';
