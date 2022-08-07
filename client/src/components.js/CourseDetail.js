@@ -1,12 +1,9 @@
 //Stateful Component 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Consumer } from './components.js/Context';
-// import React {useState} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Context } from 'react';
 
 
 export default function CourseDetail() {
-
 
 return(
         <main>
