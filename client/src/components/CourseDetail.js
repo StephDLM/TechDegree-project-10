@@ -1,6 +1,7 @@
 //Stateful Component 
 import React, { useState, useEffect, useContext } from 'react';
 import { Context } from 'react';
+//  //useeffect
 
 
 export default function CourseDetail() {
