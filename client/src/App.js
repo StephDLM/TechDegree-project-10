@@ -7,7 +7,7 @@ import { Switch } from 'react-router-dom';
 // import { Provider } from './components.js/Context';
 // import { Consumer } from './components.js/Context';
 import Courses from './components/Courses';
-// import Header from './components/Header';
+import CourseDetail from './components/CourseDetail';
 // import UserSignUp from './components/UserSignUp';
 // import UserSignIn from './components/UserSignIn';
 // import UserSignOut from './components/UserSignOut';
@@ -38,7 +38,9 @@ export default class App extends Component {
       <BrowserRouter>
         {/* <HeaderWithContext /> */}
         <Switch>
-          <Route exact path="/courses" component={Courses} />
+          <Route exact path="/" component={Courses} />
+          <Route exact path="/courses/:id" component={CourseDetail} />
+
           {/* <PrivateRoute path="/authenticated" component={AuthWithContext} />
           <Route path="/signin" component={UserSignInWithContext} />
           {/* <Route path="/signup" component={UserSignUpWithContext} />
