@@ -1,8 +1,12 @@
-import React from 'react';
+// import React from 'react';
 import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 // import { Provider } from './components.js/Context';
 // import { Consumer } from './components.js/Context';
-// import Courses from './components/Courses';
+import Courses from './components/Courses';
 // import Header from './components/Header';
 // import UserSignUp from './components/UserSignUp';
 // import UserSignIn from './components/UserSignIn';
@@ -15,52 +19,34 @@ import './App.css';
 // const UserSignInWithContext = withContext(UserSignIn);
 // const UserSignOutWithContext = withContext(UserSignOut);
 
-    function App() {
-      fetch('http://localhost:5000/api/courses')
-      .then((response) => response.json())
-       .then((data) => console.log(data));
-       return (
-     <div>Header</div>
-       );
-     }
+//     function AppOne() {
+//       fetch('http://localhost:5000/api/courses')
+//       .then((response) => response.json())
+//        .then((data) => console.log(data));
+//        return (
+//      <div>puppies</div>
+//        );
+//      }
 
 
-export default App;
+// export default AppOne;
 
-// export default class App extends component {
+export default class App extends Component {
 
-//   render() {
-//     return (
-//       <BrowserRouter>
-//         <HeaderWithContext />
-//         <Routes>
-//           <Route exact path="/" component={Public} />
-//           <PrivateRoute path="/authenticated" component={AuthWithContext} />
-//           <Route path="/signin" component={UserSignInWithContext} />
-//           {/* <Route path="/signup" component={UserSignUpWithContext} />
-//           <Route path="/signout" component={UserSignOutWithContext} />
-//           <Route component={NotFound} /> */}
-//         </Routes>
-//     </BrowserRouter>
-//     );
-//   }
+  render() {
+    return (
+      <BrowserRouter>
+        {/* <HeaderWithContext /> */}
+        <Switch>
+          <Route exact path="/courses" component={Courses} />
+          {/* <PrivateRoute path="/authenticated" component={AuthWithContext} />
+          <Route path="/signin" component={UserSignInWithContext} />
+          {/* <Route path="/signup" component={UserSignUpWithContext} />
+          <Route path="/signout" component={UserSignOutWithContext} />
+          <Route component={NotFound} /> */}
+        </Switch> 
+    </BrowserRouter>
+    );
+  }
 
-// };
-
-
-// export default () => (
-//   <Router>
-//     <div>
-//       <HeaderWithContext />
-
-//       <Switch>
-//         <Route exact path="/" component={Public} />
-//         <PrivateRoute path="/authenticated" component={AuthWithContext} />
-//         <Route path="/signin" component={UserSignInWithContext} />
-//         <Route path="/signup" component={UserSignUpWithContext} />
-//         <Route path="/signout" component={UserSignOutWithContext} />
-//         <Route component={NotFound} />
-//       </Switch>
-//     </div>
-//   </Router>
-// );
+};
