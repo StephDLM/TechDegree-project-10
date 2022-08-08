@@ -4,7 +4,11 @@ import { Context } from 'react';
 
 
 export default function CourseDetail() {
+/* use effect from : https://teamtreehouse.com/library/perform-side-effects-with-useeffect
+to fetch data from each course 
+*/
 
+//Rendering HTML 
 return(
         <main>
             <div class="actions--bar">

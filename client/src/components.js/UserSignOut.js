@@ -1,11 +1,11 @@
 // STATELESS
-import React from 'react';
-import { Redirect } from 'react-router-dom';
+// import React from 'react';
+// import { Redirect } from 'react-router-dom';
         
-export default ({context}) => {
-  context.actions.signOut();
+// export default ({context}) => {
+//   context.actions.signOut();
 
-  return (
-    <Redirect to="/" />
-  );
-}
+//   return (
+//     <Redirect to="/" />
+//   );
+// }
