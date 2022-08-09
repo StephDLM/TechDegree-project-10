@@ -1,8 +1,6 @@
 //Stateful Component 
 import React, { useState, useEffect } from 'react';
-// import { Context } from '../Context';
 import { useParams } from "react-router-dom";
-import { Buffer } from "buffer"; 
 
 export default function CourseDetail() {
     const [course, setCourse] = useState(null);//initializing an array-->[variables, what you call when you wanna update courses]-

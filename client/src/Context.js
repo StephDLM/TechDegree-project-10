@@ -17,9 +17,9 @@ export class Provider extends Component {
   }
 
   render() {
-    const { authenticatedUser } = this.state;
+    const { authenticatedUser, course, courses} = this.state;
     const value = {
-      authenticatedUser,
+      authenticatedUser, courses, course,
       data: this.data,
       actions: {
         signIn: this.signIn,
@@ -73,3 +73,4 @@ export default function withContext(Component) {
     );
   }
 }
+// export default { withContext }

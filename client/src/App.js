@@ -8,28 +8,18 @@ import { Switch } from 'react-router-dom';
 // import { Consumer } from './components.js/Context';
 import Courses from './components/Courses';
 import CourseDetail from './components/CourseDetail';
+import UserSignIn from './components/UserSignIn';
 // import UserSignUp from './components/UserSignUp';
-// import UserSignIn from './components/UserSignIn';
 // import UserSignOut from './components/UserSignOut';
 // import Authenticated from './components/Authenticated';
-// import withContext from './Context';
+import withContext from './Context';
 // const HeaderWithContext = withContext(Header);
 // const AuthWithContext = withContext(Authenticated);
 // const UserSignUpWithContext = withContext(UserSignUp);
-// const UserSignInWithContext = withContext(UserSignIn);
+const UserSignInWithContext = withContext(UserSignIn);
+console.log(UserSignInWithContext);
 // const UserSignOutWithContext = withContext(UserSignOut);
 
-//     function AppOne() {
-//       fetch('http://localhost:5000/api/courses')
-//       .then((response) => response.json())
-//        .then((data) => console.log(data));
-//        return (
-//      <div>puppies</div>
-//        );
-//      }
-
-
-// export default AppOne;
 
 export default class App extends Component {
 
@@ -40,6 +30,8 @@ export default class App extends Component {
         <Switch>
           <Route exact path="/" component={Courses} />
           <Route exact path="/courses/:id" component={CourseDetail} />
+          <Route path="/signin" component={UserSignInWithContext} />
+
 
           {/* <PrivateRoute path="/authenticated" component={AuthWithContext} />
           <Route path="/signin" component={UserSignInWithContext} />
