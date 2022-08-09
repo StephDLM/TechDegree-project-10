@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 export default function CourseDetail() {
     const [course, setCourse] = useState(null);//initializing an array-->[variables, what you call when you wanna update courses]-
-    // const context = useContext(Context)
     let { id } = useParams();
 
     useEffect(() => {

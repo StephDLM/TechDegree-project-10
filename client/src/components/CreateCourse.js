@@ -5,10 +5,9 @@
 
 
 
-// export default function CreateCourse() {
+// export default function CreateCourse({context}) {
 //     //creating objects in state that we can use to update each object
 //     const newCourse = () => {
-//     const context = useContext(Context); //importing conext
 //     const authUser = context.authenticatedUser;
 
 //     //need to import autheticatedUser 
@@ -22,16 +21,12 @@
 //     });
     
 //    }
- 
-//     render() {
-//     // const  {
-//     //     title,
-//     //     description,
-//     //     estimatedTime,
-//     //     materialsNeeded,
-//     //     errors
-//     // } = this.state;
-//     fetch(`http://localhost:5000/api/courses/${id}`) 
+// //handlesumbit function (e)
+// inputs for the forms: e.target[0].value
+// description
+// //how to send a post request with fetch==> 
+// //sending post request to create this course
+//     fetch(`http://localhost:5000/api/courses/${id}`,  { method: 'POST'}) 
 //     .then ((response) => response.json())
 //     .catch(err => console.log('Oh noes!', err))
 // //create new course 
@@ -43,8 +38,7 @@
 //             materialsNeeded: "",
 //     }
 //     };
-
-// //add prevent default ?
+// //add prevent default ?==> add e.preven
 
 //     return (
 //         <main>
@@ -57,7 +51,7 @@
 //               <li>Please provide a value for "Description"</li>
 //             </ul>
 //           </div>
-//           <form>
+//           <Form>
 //             <div className="main--flex">
 //               <div>
 //                 <label htmlFor="courseTitle">Course Title</label>
@@ -74,50 +68,13 @@
 //               </div>
 //             </div>
 //             <button className="button" type="submit">Create Course</button><button className="button button-secondary" onclick="event.preventDefault(); location.href='index.html';">Cancel</button>
-//           </form>
+//           </Form>
 //         </div>
 //       </main>
 //     )};
-//     change = (event) => {
-//         const name = event.target.name;
-//         const value = event.target.value;
     
-//         this.setState(() => {
-//           return {
-//             [name]: value
-//           };
-//         });
-//       }
-    
-//       submit = () => {
-//         const { context } = this.props;
-//         const {
-//           title,
-//           description,
-//           estimatedTime,
-//           materialsNeeded
-//         } = this.state;
-//       }
-    
-//         context.data.createCourse(newCourse)
-//           .then( errors => {
-//             if (errors.length) {
-//               this.setState({ errors });
-//             } 
-//             // else {
-//             //   context.actions.createCourse(username, password)
-//             //     .then(() => {
-//             //       this.props.history.push('/authenticated');    
-//             //     });
-//             // }
-//           })
-//           .catch((err) => {
-//             console.log(err);
-//             this.props.history.push('/error');
-//           });
       
-      
-    
+//     //covert to function 
 //       cancel = () => {
 //        this.props.history.push('/');
 //       }}

@@ -1,43 +1,35 @@
 // //STATELESS -- maybe export 
-// import React from 'react';
-// // import signOut from './UserSignOut';
-// // import signIn from './UserSignOut';
-// import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-// const Header = () =>{
-//     const { context } = this.props;
-//     const authUser = context.authenticatedUser;    
+export default class Header extends React.PureComponent {
+    render() {
+      const { context } = this.props;
+    //   const authUser = context.AuthWithContext;
   
-//     return (
-//     <div className="header">
-//     <div className="bounds">
-//       <h1 className="header--logo">MyAuth</h1>
-//       <nav>
-//         {authUser ? (
-//           <React.Fragment>
-//             <span>Welcome, {authUser.name}!</span>
-//             <Link to="/signout">Sign Out</Link>
-//           </React.Fragment>
-//         ) : (
-//           <React.Fragment>
-//             <Link className="signup" to="/signup">Sign Up</Link>
-//             <Link className="signin" to="/signin">Sign In</Link>
-//           </React.Fragment>
-//         )}
-//       </nav>
-//     </div>
-//   </div>
-//         )
-// }
-
-{/* <header>
-<div class="wrap header--flex">
-    <h1 class="header--logo"><a href="index.html">Courses</a></h1>
-    <nav>
-        <ul class="header--signedout">
-            <li><a href="sign-up.html">Sign Up</a></li>
-            <li><a href="sign-in.html">Sign In</a></li>
-        </ul>
-    </nav>
-</div>
-</header> */}
+      return (
+        <header>
+          <div className="wrap header--flex">
+            <h1 className="header--logo">
+              <Link to="/">Courses</Link>
+            </h1>
+            <nav>
+              {/* {authUser ? ( */}
+                <React.Fragment>
+                  <ul className="header--signedin">
+                    {/* <span>Welcome, {authUser.firstName}!</span> */}
+                    <li><Link to="/signout">Sign Out</Link></li>
+                  </ul>
+                </React.Fragment>
+              {/* ) : (  */}
+                <React.Fragment>
+                  <ul className="header--signedout">
+                    <li><Link to="/signup">Sign Up</Link></li>
+                    <li><Link to="/signin">Sign In</Link></li>
+                  </ul>
+                </React.Fragment>
+               {/* )}  */}
+            </nav>
+          </div>
+        </header>
+      )}};
