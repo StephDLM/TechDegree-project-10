@@ -27,9 +27,9 @@ export default class UserSignIn extends Component {
                 submitButtonText="Sign In"
                 elements={() => (
                   <React.Fragment>   
-                    <label for="emailAddress">Email Address</label>
+                    <label htmlFor="emailAddress">Email Address</label>
                     <input id="emailAddress" name="emailAddress" type="email" value={emailAddress} onChange={this.change}/>
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="password" value={password} onChange={this.change}/>
                     {/* <button class="button" type="submit">Sign In</button><button class="button button-secondary" onclick="event.preventDefault(); location.href='index.html';">Cancel</button>             */}
                 </React.Fragment>
