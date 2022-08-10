@@ -1,10 +1,12 @@
 //Stateful Component 
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
+import ReactMarkdown from 'react-markdown'
 
 export default function CourseDetail() {
     const [course, setCourse] = useState(null);//initializing an array-->[variables, what you call when you wanna update courses]-
     let { id } = useParams();
+    console.log(course);
 
     useEffect(() => {
         function fetchCourses() {
@@ -12,6 +14,7 @@ export default function CourseDetail() {
         .then ((response) => response.json())
         .then ((data) => setCourse(data.courses))
         .catch(err => console.log('Oh noes!', err))
+ 
         }
             fetchCourses();
             console.log("fetch was successful")
@@ -47,7 +50,7 @@ return(
 
                             <h3 className="course--detail--title">Materials Needed</h3>
                             <ul className="course--detail--list">
-                                <li>{course.materialsNeeded}</li>
+                                <ReactMarkdown>{course.materialsNeeded}</ReactMarkdown>
                             </ul>
                         </div>
                     </div>
