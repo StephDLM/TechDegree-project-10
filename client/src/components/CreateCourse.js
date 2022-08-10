@@ -25,12 +25,12 @@ export default function CreateCourse({context}) {
                     description,
                     estimatedTime,
                     materialsNeeded,
-                    userId: authUser.userId
+                    userId: authUser.id
 
                 };
             //how to send a post request with fetch==> source: https://www.geeksforgeeks.org/get-and-post-method-using-fetch-api/
             //sending post request to create a course
-            fetch(`http://localhost:5000/api/courses`, {
+            fetch('http://localhost:5000/api/courses', {
                 // Adding method type
                 method: "POST",
                 // Adding headers to the request
