@@ -1,4 +1,3 @@
-// import React from 'react';
 import './App.css';
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
@@ -11,19 +10,18 @@ import CourseDetail from './components/CourseDetail';
 import UserSignIn from './components/UserSignIn';
 import UserSignUp from './components/UserSignUp';
 import Header from './components/Header';
-
-// import UserSignOut from './components/UserSignOut';
+import UpdateCourse from './components/UpdateCourse';
+import UserSignOut from './components/UserSignOut';
 import Authenticated from './components/Authenticated';
 import withContext from './Context';
 import CreateCourse from './components/CreateCourse';
+
 const HeaderWithContext = withContext(Header);
 const AuthWithContext = withContext(Authenticated);
-
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
 const CreateCourseWithContext = withContext(CreateCourse);
-
-// const UserSignOutWithContext = withContext(UserSignOut);
+const UserSignOutWithContext = withContext(UserSignOut);
 
 
 export default class App extends Component {

@@ -5,8 +5,6 @@ import { Buffer } from 'buffer';
 import { useHistory } from 'react-router-dom';
 import Form from './Form';
 
-
-
 export default function CreateCourse({context}) {
         //creating objects in state that we can use to update each object
         // let context = useContext(Context);
@@ -19,36 +17,36 @@ export default function CreateCourse({context}) {
         const [materialsNeeded, setmaterialsNeeded] = useState('')
         const [errors, errorsNeeded] = useState ('');
 
-        function handleSubmit () {
-                const newCourse= {
-                    title,
-                    description,
-                    estimatedTime,
-                    materialsNeeded,
-                    userId: authUser.id
+    function handleSubmit () {
+            const newCourse= {
+                title,
+                description,
+                estimatedTime,
+                materialsNeeded,
+                userId: authUser.id
 
-                };
-            //how to send a post request with fetch==> source: https://www.geeksforgeeks.org/get-and-post-method-using-fetch-api/
-            //sending post request to create a course
-            fetch('http://localhost:5000/api/courses', {
-                // Adding method type
-                method: "POST",
-                // Adding headers to the request
-                headers: {
-                    'Authorization': 'Basic ' + Buffer.from(`${authUser.emailAddress}:${authUser.password}`).toString("base64"),
-                    "Content-Type": "application/json" ,       
-                },
-                // Adding body or contents to send
-                body: JSON.stringify({newCourse})
-            
-            })
-            // Converting to JSON
-            // .then((response) => response.json())
-            // Displaying results to console
-            .then(json => console.log(json))
-            .catch(err => console.log('Oh noes!', err));
-            //adding redirect (history.push)
             };
+        //how to send a post request with fetch==> source: https://www.geeksforgeeks.org/get-and-post-method-using-fetch-api/
+        //sending post request to create a course
+        fetch('http://localhost:5000/api/courses', {
+            // Adding method type
+            method: "POST",
+            // Adding headers to the request
+            headers: {
+                'Authorization': 'Basic ' + Buffer.from(`${authUser.emailAddress}:${authUser.password}`).toString("base64"),
+                "Content-Type": "application/json" ,       
+            },
+            // Adding body or contents to send
+            body: JSON.stringify({newCourse})
+        
+        })
+        // Converting to JSON
+        // .then((response) => response.json())
+        // Displaying results to console
+        .then(json => console.log(json))
+        .catch(err => console.log('Oh noes!', err));
+        //adding redirect (history.push)
+        };
     return (
         <main>
         <div className="wrap">
@@ -67,15 +65,15 @@ export default function CreateCourse({context}) {
                 submitButtonText="Create Course"
                 elements={() => (
                 <React.Fragment>  
-                    <div className="main--flex">
-                    <div>
+                <div className="main--flex">
+                <div>
                     <label htmlFor="title">Course Title</label>
                     <input id="title" name="title" type="text" value={title} onChange={change}/>
                     <p>By Joes</p>
                     <label htmlFor="description">Course Description</label>
                     <textarea id="description" name="description" value={description}onChange={change}/>
-                    </div>
-                    <div>
+                </div>
+                <div>
                     <label htmlFor="estimatedTime">Estimated Time</label>
                     <input id="estimatedTime" name="estimatedTime" type="text" value={estimatedTime} onChange={change}/>
                     <label htmlFor="materialsNeeded">Materials Needed</label>
@@ -86,7 +84,8 @@ export default function CreateCourse({context}) {
         </div>
         </main>
     );
-//covert to function 
+
+ //cancel button   
     function cancel () {
         history.push('/');
         }

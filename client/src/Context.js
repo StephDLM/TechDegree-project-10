@@ -37,6 +37,7 @@ export class Provider extends Component {
   signIn = async (username, password) => {
     const user = await this.data.getUser(username, password);
     if (user !== null) {
+      user.password = password; //add a password property to the object and use the password that was typed by in by the user as a plain string in the state
       this.setState(() => {
         return {
           authenticatedUser: user,
