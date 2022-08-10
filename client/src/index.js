@@ -4,13 +4,13 @@ import './styles/reset.css';
 import './styles/global.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import {Provider} from './Context';
+import {Provider} from './Context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-//   <Provider>
+  <Provider>
     <App />
-//   </Provider>
+   </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
