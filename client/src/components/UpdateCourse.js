@@ -1,6 +1,6 @@
 
 import React, { useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import  Context from '../Context';
 import { Buffer } from 'buffer';
 import { useHistory } from 'react-router-dom';
@@ -26,50 +26,52 @@ export default function UpdateCourse({context}) {
         materialsNeeded,
         userId: authUser.id
     };
-    // setup course state with the properties that the course object has
-        const [course, setCourse] = useState({
+// setup course state with the properties that the course object has
+    const [course, setCourse] = useState({
+        id: '',
+        title: '',
+        description: '',
+        estimatedTime: '',
+        materialsNeeded: '',
+        user: {
             id: '',
-            title: '',
-            description: '',
-            estimatedTime: '',
-            materialsNeeded: '',
-            user: {
-                id: '',
-                firstName: '',
-                lastName: '',
-                emailAddress: ''
-            }        
-          });
-          useEffect(() => {
-            function fetchCourses() {
-            fetch(`http://localhost:5000/api/courses/${id}`) //course variable is empty here 
-            .then ((response) => response.json())
-            .then ((data) => setCourse(data.courses))
-            .catch(err => console.log('Oh noes!', err))
-            }
-                fetchCourses();
-                console.log("fetch was successful")
-            }, []);
+            firstName: '',
+            lastName: '',
+            emailAddress: ''
+        }        
+        });
+        useEffect(() => {
+        function fetchCourses() {
+        fetch(`http://localhost:5000/api/courses/${id}`)
+        .then ((response) => response.json())
+        .then ((data) => setCourse(data.courses))
+        .catch(err => console.log('Oh noes!', err))
+        }
+            fetchCourses();
+            console.log("fetch was successful")
+        }, []);
             
 
-        function handleSubmit () {
-            const requestOptions = {
-                method: 'PUT',
-                headers: { 
-                    'Authorization': 'Basic ' + Buffer.from(`${authUser.emailAddress}:${authUser.password}`).toString("base64"),
-                    "Content-Type": "application/json" ,    
-                },
-                body: JSON.stringify({ UpdateCourse })}
-
-            fetch(`http://localhost:5000/api/courses/${id}`, requestOptions) //how to use a put request with fetch => https://jasonwatmore.com/post/2021/09/20/fetch-http-put-request-examples 
-    
-            // .then(response => response.json())
-            // .then(value => UpdateCourse({
-            //     setTitle: value.title,
-            //     setDescription: value.description,
-            //     setTime: value.estimatedTime,
-            //     setmaterialsNeeded: value.materialsNeeded
-        };
+    function handleSubmit () {
+    //     const error = [];
+    //     if (!title){
+    //         console.log("title missing")
+    //         error.push(['Please provide a value for "Title"'])
+    //     } else if (!description){
+    //         console.log("description missing")
+    //         error.push(['Please provide a value for "Description"'])
+    //     } else {
+    // //put request to update the course information using UpdateCourse object
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 
+                'Authorization': 'Basic ' + Buffer.from(`${authUser.emailAddress}:${authUser.password}`).toString("base64"),
+                "Content-Type": "application/json" ,    
+            },
+            body: JSON.stringify({ UpdateCourse })}
+            console.log({UpdateCourse})
+        fetch(`http://localhost:5000/api/courses/${id}`, requestOptions) //how to use a put request with fetch => https://jasonwatmore.com/post/2021/09/20/fetch-http-put-request-examples 
+    };
 
 
     return (
@@ -111,7 +113,7 @@ export default function UpdateCourse({context}) {
 //function to type when there is an event 
 function change(e){
     const { name, value } = e.target;
-
+//this will update the letters in each property
     setCourse(prevState => ({
         ...prevState,
         [name]: value,
