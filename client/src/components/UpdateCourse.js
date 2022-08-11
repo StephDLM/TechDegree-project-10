@@ -1,5 +1,5 @@
 
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import  Context from '../Context';
 import { Buffer } from 'buffer';
@@ -20,6 +20,14 @@ export default function UpdateCourse({context}) {
     const [errors, errorsNeeded] = useState ('');   
 
     //how to use a put request with fetch => https://jasonwatmore.com/post/2021/09/20/fetch-http-put-request-examples 
+    function handleSubmit () {
+        const UpdateCourse= {
+            title,
+            description,
+            estimatedTime,
+            materialsNeeded,
+            userId: authUser.id
+        }
     const requestOptions = {
         method: 'PUT',
         headers: { 
@@ -28,19 +36,16 @@ export default function UpdateCourse({context}) {
         },
         body: JSON.stringify({ UpdateCourse })
     };
-    fetch('http://localhost:5000/api/courses/:id/update', requestOptions)
+        fetch(`http://localhost:5000/api/courses/${id}`, requestOptions)
         .then(response => response.json())
-        .then(data => data.updatedAt);
+        .then(response => UpdateCourse({
+            setTitle: response.title,
+            setDescription: response.title,
+            setTime: response.estimatedTime,
+            setmaterialsNeeded: response.materialsNeeded
+    }))
+    };
 
-    function handleSubmit () {
-        const UpdateCourse= {
-            title,
-            description,
-            estimatedTime,
-            materialsNeeded,
-            userId: authUser.id
-
-        };
 
     return (
         <main>
@@ -56,16 +61,16 @@ export default function UpdateCourse({context}) {
               <div className="main--flex">
                 <div>
                   <label htmlFor="courseTitle">Course Title</label>
-                  <input id="courseTitle" name="courseTitle" type="text" value={setTitle} />
+                  <input id="courseTitle" name="courseTitle" type="text" value={setTitle} onChange ={change}/>
                   <p>By Joe Smith</p>
                   <label htmlFor="courseDescription">Course Description</label>
-                  <textarea id="courseDescription" name="courseDescription" value={setDescription} />
+                  <textarea id="courseDescription" name="courseDescription" value={setDescription} onChange ={change}/>
                 </div>
                 <div>
                   <label htmlFor="estimatedTime">Estimated Time</label>
-                  <input id="estimatedTime" name="estimatedTime" type="text" value={setTime} />
+                  <input id="estimatedTime" name="estimatedTime" type="text" value={setTime} onChange ={change}/>
                   <label htmlFor="materialsNeeded">Materials Needed</label>
-                  <textarea id="materialsNeeded" name="materialsNeeded" value={setmaterialsNeeded} />
+                  <textarea id="materialsNeeded" name="materialsNeeded" value={setmaterialsNeeded} onChange ={change}/>
                 </div>
               </div>
                 </React.Fragment>  )}/> 
@@ -78,7 +83,7 @@ export default function UpdateCourse({context}) {
   function cancel () {
     history.push('/');
     }
-//check keyboard 
+//function to type when there is an event 
 function change(e){
     const name = e.target.name;
     const value = e.target.value;
@@ -93,5 +98,4 @@ function change(e){
         setmaterialsNeeded(value);
     }
 };
-}}
- 
+}

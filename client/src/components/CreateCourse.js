@@ -42,10 +42,7 @@ export default function CreateCourse({ context }) {
         // Adding headers to the request
         headers: {
           'Authorization':
-            "Basic " +
-            Buffer.from(
-              `${authUser.emailAddress}:${authUser.password}`
-            ).toString("base64"),
+            "Basic " + Buffer.from(`${authUser.emailAddress}:${authUser.password}`).toString("base64"),
           "Content-Type": "application/json"
         },
         // Adding body or contents to send
@@ -56,10 +53,7 @@ export default function CreateCourse({ context }) {
           else if (res.status === 400) throw errors;
         })
         .then(() => history.push("/"))
-      // .then(history.push('/'))
 
-      // Converting to JSON
-      // .then((response) => response.json())
       // Displaying results to console
       .then((json) => console.log(json))
       .catch((err) => console.log("Oh noes!", err));
@@ -92,7 +86,7 @@ export default function CreateCourse({ context }) {
                     value={title}
                     onChange={change}
                   />
-                  <p>By Joes</p>
+                  <p>{authUser.firstName} {authUser.lastName}</p>
                   <label htmlFor="description">Course Description</label>
                   <textarea
                     id="description"
