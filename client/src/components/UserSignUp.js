@@ -86,6 +86,7 @@ export default class UserSignUp extends Component {
   };
 
   submit = () => {
+//use destructuring assignment to extract the context prop from this.props, and unpack the the properties from the state object (this.state) into distinct variables:
     const { context } = this.props;
     const {
       firstName,
@@ -94,7 +95,7 @@ export default class UserSignUp extends Component {
       password,
     } = this.state;
 
-    // Create user
+    // user payload
     const user = {
       firstName,
       lastName,
@@ -109,7 +110,7 @@ export default class UserSignUp extends Component {
         } else {
           context.actions.signIn(emailAddress, password)
             .then(() => {
-              this.props.history.push('/authenticated');    
+              this.props.history.push('/');    
             });
         }
       })

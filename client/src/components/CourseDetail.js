@@ -1,6 +1,6 @@
 //Stateful Component 
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
 
 export default function CourseDetail() {
@@ -28,9 +28,9 @@ return(
         <main>
             <div className="actions--bar">
                 <div className="wrap">
-                    <a className="button" href="update-course.html">Update Course</a>
-                    <a className="button" href="/" onClick={ deleteCourse }>Delete Course</a> 
-                    <a className="button button-secondary" href="/">Return to List</a>
+                    <Link className="button" to="/courses/:id/update">Update Course</Link>
+                    <Link className="button" to="/" onClick={ deleteCourse }>Delete Course</Link> 
+                    <Link className="button button-secondary" to="/">Return to List</Link>
                 </div>
             </div>
        {course !== null ?

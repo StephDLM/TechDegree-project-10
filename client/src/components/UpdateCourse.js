@@ -23,13 +23,12 @@ export default function UpdateCourse({context}) {
     const requestOptions = {
         method: 'PUT',
         headers: { 
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer my-token',
-            'My-Custom-Header': 'foobar'
+            'Authorization': 'Basic ' + Buffer.from(`${authUser.emailAddress}:${authUser.password}`).toString("base64"),
+            "Content-Type": "application/json" ,    
         },
         body: JSON.stringify({ UpdateCourse })
     };
-    fetch('https://reqres.in/api/articles/1', requestOptions)
+    fetch('http://localhost:5000/api/courses/:id/update', requestOptions)
         .then(response => response.json())
         .then(data => data.updatedAt);
 
@@ -93,9 +92,6 @@ function change(e){
     } else if (name === 'materialsNeeded'){
         setmaterialsNeeded(value);
     }
-
 };
-
 }}
  
-    //https://www.pluralsight.com/guides/fetching-data-updating-state-hooks

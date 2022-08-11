@@ -9,6 +9,8 @@ export default function CreateCourse({context}) {
         //creating objects in state that we can use to update each object
         // let context = useContext(Context);
         const authUser = context.authenticatedUser;
+
+        // console.log(authUser.id)
         let history = useHistory();
     
         const [title, setTitle] = useState ('')
@@ -18,17 +20,18 @@ export default function CreateCourse({context}) {
         const [errors, errorsNeeded] = useState ('');
 
     function handleSubmit () {
+        // const { id } = authUser;
+        console.log(authUser)
             const newCourse= {
                 title,
                 description,
                 estimatedTime,
                 materialsNeeded,
                 userId: authUser.id
-
             };
         //how to send a post request with fetch==> source: https://www.geeksforgeeks.org/get-and-post-method-using-fetch-api/
         //sending post request to create a course
-        fetch('http://localhost:5000/api/courses', {
+        fetch('http://localhost:5000/api/courses/create', {
             // Adding method type
             method: "POST",
             // Adding headers to the request

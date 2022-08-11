@@ -12,7 +12,7 @@ export class Provider extends Component {
     // this.cookie = Cookies.get('authenticatedUser');
 
     this.state = {
-      authenticatedUser: this.cookie ? JSON.parse(this.cookie) : null
+      authenticatedUser: null
     };
   }
 
@@ -21,7 +21,7 @@ export class Provider extends Component {
     const value = {
       authenticatedUser, courses, course,
       data: this.data,
-      actions: {
+      actions: { // Add the 'actions' property and object
         signIn: this.signIn,
         signOut: this.signOut
       },
@@ -34,8 +34,8 @@ export class Provider extends Component {
   }
 
   
-  signIn = async (username, password) => {
-    const user = await this.data.getUser(username, password);
+  signIn = async (emailAddress, password) => {
+    const user = await this.data.getUser(emailAddress, password);
     if (user !== null) {
       user.password = password; //add a password property to the object and use the password that was typed by in by the user as a plain string in the state
       this.setState(() => {
@@ -53,7 +53,6 @@ export class Provider extends Component {
 
   signOut = () => {
     this.setState({ authenticatedUser: null });
-    Cookies.remove('authenticatedUser');
   }
 }
 
@@ -64,7 +63,7 @@ export const Consumer = Context.Consumer;
  * @param {class} Component - A React component.
  * @returns {function} A higher-order component.
  */
-
+//withContext automatically subscribes (or connects) the component passed to it to all actions and context changes
 export default function withContext(Component) {
   return function ContextComponent(props) {
     return (
