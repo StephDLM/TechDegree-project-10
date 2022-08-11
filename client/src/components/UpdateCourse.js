@@ -38,14 +38,13 @@ export default function UpdateCourse({context}) {
     };
         fetch(`http://localhost:5000/api/courses/${id}`, requestOptions)
         .then(response => response.json())
-        .then(response => UpdateCourse({
-            setTitle: response.title,
-            setDescription: response.title,
-            setTime: response.estimatedTime,
-            setmaterialsNeeded: response.materialsNeeded
+        .then(value => UpdateCourse({
+            setTitle: value.title,
+            setDescription: value.description,
+            setTime: value.estimatedTime,
+            setmaterialsNeeded: value.materialsNeeded
     }))
     };
-
 
     return (
         <main>
@@ -61,16 +60,16 @@ export default function UpdateCourse({context}) {
               <div className="main--flex">
                 <div>
                   <label htmlFor="courseTitle">Course Title</label>
-                  <input id="courseTitle" name="courseTitle" type="text" value={setTitle} onChange ={change}/>
-                  <p>By Joe Smith</p>
+                  <input id="courseTitle" name="courseTitle" type="text" value={title} onChange ={change}/>
+                  <p>By {user.firstName} {user.lastName}</p>
                   <label htmlFor="courseDescription">Course Description</label>
-                  <textarea id="courseDescription" name="courseDescription" value={setDescription} onChange ={change}/>
+                  <textarea id="courseDescription" name="courseDescription" value={description} onChange ={change}/>
                 </div>
                 <div>
                   <label htmlFor="estimatedTime">Estimated Time</label>
-                  <input id="estimatedTime" name="estimatedTime" type="text" value={setTime} onChange ={change}/>
+                  <input id="estimatedTime" name="estimatedTime" type="text" value={estimatedTime} onChange ={change}/>
                   <label htmlFor="materialsNeeded">Materials Needed</label>
-                  <textarea id="materialsNeeded" name="materialsNeeded" value={setmaterialsNeeded} onChange ={change}/>
+                  <textarea id="materialsNeeded" name="materialsNeeded" value={materialsNeeded} onChange ={change}/>
                 </div>
               </div>
                 </React.Fragment>  )}/> 

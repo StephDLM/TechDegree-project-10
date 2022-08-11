@@ -30,7 +30,6 @@ export default function CreateCourse({ context }) {
       userId: authUser.id,
     };
 
-
     //function to throw an error when title and description are empty
     //how to send a post request with fetch==> source: https://www.geeksforgeeks.org/get-and-post-method-using-fetch-api/
     //sending post request to create a course
