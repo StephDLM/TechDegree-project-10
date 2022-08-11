@@ -70,6 +70,7 @@ export default function UpdateCourse({context}) {
             },
             body: JSON.stringify(course)};
         fetch(`http://localhost:5000/api/courses/${id}`, requestOptions) //how to use a put request with fetch => https://jasonwatmore.com/post/2021/09/20/fetch-http-put-request-examples 
+        history.push('/')
     };
 
 

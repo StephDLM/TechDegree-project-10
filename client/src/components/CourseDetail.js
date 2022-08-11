@@ -35,13 +35,13 @@ return(
             </div>
        {course !== null ?
             <div className="wrap">
-                <h2>Course Details</h2>
+             <h2>Course Details</h2>
                 <form>
                     <div className="main--flex">
                         <div>
                             <h3 className="course--detail--title">Course</h3>
                             <h4 className="course--name">{course.title}</h4>
-                            <p>{course.user.firstName} {course.user.lastName}</p>
+                            <p>By {course.user.firstName} {course.user.lastName}</p>
                             <p>{course.description}</p>
                         </div>
                         <div>
@@ -55,7 +55,7 @@ return(
                         </div>
                     </div>
                 </form>
-           </div>
+             </div>
            : <h1> nothing </h1>}
         
          </main>
