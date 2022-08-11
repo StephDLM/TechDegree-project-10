@@ -31,7 +31,7 @@ export default function CreateCourse({context}) {
             };
         //how to send a post request with fetch==> source: https://www.geeksforgeeks.org/get-and-post-method-using-fetch-api/
         //sending post request to create a course
-        fetch('http://localhost:5000/api/courses/create', {
+        fetch('http://localhost:5000/api/courses', {
             // Adding method type
             method: "POST",
             // Adding headers to the request
@@ -40,7 +40,7 @@ export default function CreateCourse({context}) {
                 "Content-Type": "application/json" ,       
             },
             // Adding body or contents to send
-            body: JSON.stringify({newCourse})
+            body: JSON.stringify(newCourse)
         
         })
         // Converting to JSON
@@ -48,8 +48,8 @@ export default function CreateCourse({context}) {
         // Displaying results to console
         .then(json => console.log(json))
         .catch(err => console.log('Oh noes!', err));
-        //adding redirect (history.push)
-        };
+        history.push('/')
+            };
     return (
         <main>
         <div className="wrap">
