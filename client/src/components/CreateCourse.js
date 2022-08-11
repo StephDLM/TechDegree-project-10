@@ -29,6 +29,9 @@ export default function CreateCourse({ context }) {
       materialsNeeded,
       userId: authUser.id,
     };
+
+
+    //function to throw an error when title and description are empty
     //how to send a post request with fetch==> source: https://www.geeksforgeeks.org/get-and-post-method-using-fetch-api/
     //sending post request to create a course
     fetch(
@@ -38,23 +41,23 @@ export default function CreateCourse({ context }) {
         method: "POST",
         // Adding headers to the request
         headers: {
-          Authorization:
+          'Authorization':
             "Basic " +
             Buffer.from(
               `${authUser.emailAddress}:${authUser.password}`
             ).toString("base64"),
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         // Adding body or contents to send
-        body: JSON.stringify(newCourse),
-      }
+        body: JSON.stringify(newCourse)
+      })
         .then((res) => {
           if (res.status === 200) console.log("new course added");
           else if (res.status === 400) throw errors;
         })
-        .then(history.push("/"))
+        .then(() => history.push("/"))
       // .then(history.push('/'))
-    )
+
       // Converting to JSON
       // .then((response) => response.json())
       // Displaying results to console
