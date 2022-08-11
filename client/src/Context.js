@@ -39,6 +39,7 @@ export class Provider extends Component {
     if (user !== null) {
       user.password = password; //add a password property to the object and use the password that was typed by in by the user as a plain string in the state
       this.setState(() => {
+        let userPassword = user.password //saving the password without getting hashed, to use before getting 
         return {
           authenticatedUser: user,
         };

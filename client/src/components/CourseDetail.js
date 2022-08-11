@@ -1,10 +1,20 @@
 //Stateful Component 
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from "react-router-dom";
-import ReactMarkdown from 'react-markdown'
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useHistory, useParams } from "react-router-dom";
+import ReactMarkdown from 'react-markdown';
+import { Context } from '../Context';
+import { Buffer } from 'buffer';
+import authenticateUser  from '../Context';
 
 export default function CourseDetail() {
     const [course, setCourse] = useState(null);//initializing an array-->[variables, what you call when you wanna update courses]-
+    // const context = Context
+    // const authUser = Context.authenticatedUser
+    let emailAddress = authenticateUser.emailAddress
+    let userPassword = authenticateUser.password
+    let history = useHistory();
+    //accessing EmailAddress and Password from Context 
+    // const emailAddress = context.emailAddress
     let { id } = useParams();
     console.log(course);
 
@@ -59,20 +69,22 @@ return(
            : <h1> nothing </h1>}
         
          </main>
-    )
+    );
 // DELETE request using fetch with error handling
-
         function deleteCourse() {
-        fetch(`http://localhost:5000/api/courses/${id}`, { method: 'DELETE'}) //course variable is empty here 
+        fetch(`http://localhost:5000/api/courses/${id}`, { 
+            method: 'DELETE',
+            headers: {
+                'Authorization':
+                  "Basic " + Buffer.from(`${emailAddress}:${userPassword}`).toString("base64"),
+                "Content-Type": "application/json"
+            },
+                body: null,
+            }) 
         .then(res => res.json())
-        .then(data => {})
-            // check for error response
-            // if (!response.ok) {
-            //     // get error message from body or default to response status
-            //     const error = (data) || response.status;
-            //     return Promise.reject(error);
-            // }
+        .then (()=> history.push('/'))
         .catch(err => console.log(err));
+        console.log(authenticateUser)
         };
         }
 //delete method inside my fetch ==> how to send a delete request

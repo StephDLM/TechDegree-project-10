@@ -31,7 +31,6 @@ export default class UserSignIn extends Component {
                     <input id="emailAddress" name="emailAddress" type="email" value={emailAddress} onChange={this.change}/>
                     <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="password" value={password} onChange={this.change}/>
-                    {/* <button class="button" type="submit">Sign In</button><button class="button button-secondary" onclick="event.preventDefault(); location.href='index.html';">Cancel</button>             */}
                 </React.Fragment>
                 )} />
             <p> Don't have a user account? Click here to <Link to="/signup">Click here</Link> sign up !
