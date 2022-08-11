@@ -59,11 +59,11 @@ export default function UpdateCourse({context}) {
                 <React.Fragment>  
               <div className="main--flex">
                 <div>
-                  <label htmlFor="courseTitle">Course Title</label>
-                  <input id="courseTitle" name="courseTitle" type="text" value={title} onChange ={change}/>
+                  <label htmlFor="title">Course Title</label>
+                  <input id="title" name="title" type="text" value={title} onChange ={change}/>
                   <p>By {user.firstName} {user.lastName}</p>
-                  <label htmlFor="courseDescription">Course Description</label>
-                  <textarea id="courseDescription" name="courseDescription" value={description} onChange ={change}/>
+                  <label htmlFor="description">Course Description</label>
+                  <textarea id="description" name="description" value={description} onChange ={change}/>
                 </div>
                 <div>
                   <label htmlFor="estimatedTime">Estimated Time</label>
