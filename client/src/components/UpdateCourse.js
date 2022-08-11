@@ -19,13 +19,13 @@ export default function UpdateCourse({context}) {
     const [materialsNeeded, setmaterialsNeeded] = useState('')
     const [errors, setErrors] = useState ('');   
 
-    const UpdateCourse= {
-        title,
-        description,
-        estimatedTime,
-        materialsNeeded,
-        userId: authUser.id
-    };
+    // const UpdateCourse= {
+    //     title,
+    //     description,
+    //     estimatedTime,
+    //     materialsNeeded,
+    //     userId: authUser.id
+    // };
 // setup course state with the properties that the course object has
     const [course, setCourse] = useState({
         id: '',
@@ -68,8 +68,7 @@ export default function UpdateCourse({context}) {
                 'Authorization': 'Basic ' + Buffer.from(`${authUser.emailAddress}:${authUser.password}`).toString("base64"),
                 "Content-Type": "application/json" ,    
             },
-            body: JSON.stringify({ UpdateCourse })}
-            console.log({UpdateCourse})
+            body: JSON.stringify(course)};
         fetch(`http://localhost:5000/api/courses/${id}`, requestOptions) //how to use a put request with fetch => https://jasonwatmore.com/post/2021/09/20/fetch-http-put-request-examples 
     };
 
