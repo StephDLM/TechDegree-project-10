@@ -22,9 +22,8 @@ export default class UserSignUp extends Component {
     } = this.state;
 
     return (
-      <div className="bounds">
-        <div className="grid-33 centered signin">
-          <h1>Sign Up</h1>
+      <div className="form--centered">
+          <h2>Sign Up</h2>
           <Form 
             cancel={this.cancel}
             errors={errors}
@@ -70,7 +69,6 @@ export default class UserSignUp extends Component {
             Already have a user account? <Link to="/signin">Click here</Link> to sign in!
           </p>
         </div>
-      </div>
     )
   };
 //check keyboard 

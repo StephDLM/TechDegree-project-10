@@ -33,7 +33,7 @@ export default class UserSignIn extends Component {
                     <input id="password" name="password" type="password" value={password} onChange={this.change}/>
                 </React.Fragment>
                 )} />
-            <p> Don't have a user account? Click here to <Link to="/signup">Click here</Link> sign up !
+            <p> Don't have a user account? <Link to="/signup">Click here</Link> to sign up !
             </p>
         </div>
     </main>
