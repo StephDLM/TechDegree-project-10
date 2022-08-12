@@ -28,18 +28,37 @@ export default function CourseDetail({context}) {
             console.log("fetch was successful")
         }, []); //list variables that you want useeffect to depend on, this will just do what useEffect used for
 
-/* use params from from : https://v5.reactrouter.com/web/api/Hooks/useparams
-*/
-///fetch request to delete 
+        // DELETE request using fetch with error handling
+        function deleteCourse() {
+            fetch(`http://localhost:5000/api/courses/${id}`, { 
+                method: 'DELETE',
+                headers: {
+                    'Authorization':
+                      "Basic " + Buffer.from(`${authUser.emailAddress}:${authUser.password}`).toString("base64"),
+                    "Content-Type": "application/json"
+                },
+                    body: null,
+                }) 
+            .then(res => res.json())
+            .then(() => history.push("/"))
+            .catch(err => console.log(err));
+            };
+// use params from from : https://v5.reactrouter.com/web/api/Hooks/useparams
 //Rendering HTML 
 return(
         <main>
             <div className="actions--bar">
                 <div className="wrap">
+                    {(authUser && course.user)? (authUser.id === course.user.id)?
+                    <React.Fragment>
                     <Link className="button" to={`/courses/${id}/update`}>Update Course</Link>
                     <Link className="button" to="/" onClick={ deleteCourse }>Delete Course</Link> 
                     <Link className="button button-secondary" to="/">Return to List</Link>
-                </div>
+                    </React.Fragment>
+                    :<Link className="button button-secondary" to="/">Return to List</Link>
+                 :<Link className="button button-secondary" to="/">Return to List</Link>
+                    }
+            </div> 
             </div>
        {course !== null ?
             <div className="wrap">
@@ -67,21 +86,6 @@ return(
            : <h1> nothing </h1>}
         
          </main>
-    );
-// DELETE request using fetch with error handling
-        function deleteCourse() {
-        fetch(`http://localhost:5000/api/courses/${id}`, { 
-            method: 'DELETE',
-            headers: {
-                'Authorization':
-                  "Basic " + Buffer.from(`${authUser.emailAddress}:${authUser.password}`).toString("base64"),
-                "Content-Type": "application/json"
-            },
-                body: null,
-            }) 
-        .then(res => res.json())
-        .then (()=> history.push('/'))
-        .catch(err => console.log(err));
-        };
-        }
-//delete method inside my fetch ==> how to send a delete request
+    )
+       };
+
