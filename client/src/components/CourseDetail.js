@@ -5,13 +5,13 @@ import ReactMarkdown from 'react-markdown';
 import { Context } from '../Context';
 import { Buffer } from 'buffer';
 import authenticateUser  from '../Context';
+// import authUser from './Authenticated'
 
-export default function CourseDetail() {
+export default function CourseDetail({context}) {
     const [course, setCourse] = useState(null);//initializing an array-->[variables, what you call when you wanna update courses]-
-    // const context = Context
-    // const authUser = Context.authenticatedUser
-    let emailAddress = authenticateUser.emailAddress
-    let userPassword = authenticateUser.password
+    const authUser = context.authenticatedUser;
+    // let emailAddress = authenticateUser.emailAddress
+    // let userPassword = authenticateUser.password
     let history = useHistory();
     //accessing EmailAddress and Password from Context 
     // const emailAddress = context.emailAddress
@@ -32,15 +32,24 @@ export default function CourseDetail() {
 
 /* use params from from : https://v5.reactrouter.com/web/api/Hooks/useparams
 */
-///fetch request to delete 
-//Rendering HTML 
+//Rendering HTML and using a ternary expression to allow update and delete button to show
 return(
         <main>
             <div className="actions--bar">
                 <div className="wrap">
+                {(authUser && course.user) ?
+                    (authUser.id === course.user.id) ?
+                    <React.Fragment>
                     <Link className="button" to={`/courses/${id}/update`}>Update Course</Link>
                     <Link className="button" to="/" onClick={ deleteCourse }>Delete Course</Link> 
                     <Link className="button button-secondary" to="/">Return to List</Link>
+                    </React.Fragment>
+                    : 
+                <Link className="button button-secondary" to="/">Return to List</Link>
+                :
+            <Link className="button button-secondary" to="/">Return to List</Link>
+            }
+
                 </div>
             </div>
        {course !== null ?
@@ -76,7 +85,7 @@ return(
             method: 'DELETE',
             headers: {
                 'Authorization':
-                  "Basic " + Buffer.from(`${emailAddress}:${userPassword}`).toString("base64"),
+                  "Basic " + Buffer.from(`${authUser.emailAddress}:${authUser.userPassword}`).toString("base64"),
                 "Content-Type": "application/json"
             },
                 body: null,
