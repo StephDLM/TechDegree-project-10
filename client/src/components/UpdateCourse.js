@@ -19,13 +19,6 @@ export default function UpdateCourse({context}) {
     const [materialsNeeded, setmaterialsNeeded] = useState('')
     const [errors, setErrors] = useState ('');   
 
-    // const UpdateCourse= {
-    //     title,
-    //     description,
-    //     estimatedTime,
-    //     materialsNeeded,
-    //     userId: authUser.id
-    // };
 // setup course state with the properties that the course object has
     const [course, setCourse] = useState({
         id: '',

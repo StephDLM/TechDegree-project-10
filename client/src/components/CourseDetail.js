@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useHistory, useParams } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
-import { Context } from '../Context';
+import Context from '../Context';
 import { Buffer } from 'buffer';
 import authenticateUser  from '../Context';
 // import authUser from './Authenticated'
@@ -13,8 +13,6 @@ export default function CourseDetail({context}) {
     // let emailAddress = authenticateUser.emailAddress
     // let userPassword = authenticateUser.password
     let history = useHistory();
-    //accessing EmailAddress and Password from Context 
-    // const emailAddress = context.emailAddress
     let { id } = useParams();
     console.log(course);
 
@@ -32,24 +30,15 @@ export default function CourseDetail({context}) {
 
 /* use params from from : https://v5.reactrouter.com/web/api/Hooks/useparams
 */
-//Rendering HTML and using a ternary expression to allow update and delete button to show
+///fetch request to delete 
+//Rendering HTML 
 return(
         <main>
             <div className="actions--bar">
                 <div className="wrap">
-                {(authUser && course.user) ?
-                    (authUser.id === course.user.id) ?
-                    <React.Fragment>
                     <Link className="button" to={`/courses/${id}/update`}>Update Course</Link>
                     <Link className="button" to="/" onClick={ deleteCourse }>Delete Course</Link> 
                     <Link className="button button-secondary" to="/">Return to List</Link>
-                    </React.Fragment>
-                    : 
-                <Link className="button button-secondary" to="/">Return to List</Link>
-                :
-            <Link className="button button-secondary" to="/">Return to List</Link>
-            }
-
                 </div>
             </div>
        {course !== null ?

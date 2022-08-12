@@ -83,7 +83,7 @@ export default function CreateCourse({ context }) {
                     value={title}
                     onChange={change}
                   />
-                  <p>{authUser.firstName} {authUser.lastName}</p>
+                  <p>By {authUser.firstName} {authUser.lastName}</p>
                   <label htmlFor="description">Course Description</label>
                   <textarea
                     id="description"
