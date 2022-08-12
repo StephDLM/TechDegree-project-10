@@ -14,7 +14,7 @@ export default function CourseDetail({context}) {
     // let userPassword = authenticateUser.password
     let history = useHistory();
     let { id } = useParams();
-    console.log(course);
+    // console.log(course);
 
     useEffect(() => {
         function fetchCourses() {
@@ -49,15 +49,10 @@ return(
         <main>
             <div className="actions--bar">
                 <div className="wrap">
-                    {(authUser && course.user)? (authUser.id === course.user.id)?
-                    <React.Fragment>
+
                     <Link className="button" to={`/courses/${id}/update`}>Update Course</Link>
                     <Link className="button" to="/" onClick={ deleteCourse }>Delete Course</Link> 
                     <Link className="button button-secondary" to="/">Return to List</Link>
-                    </React.Fragment>
-                    :<Link className="button button-secondary" to="/">Return to List</Link>
-                 :<Link className="button button-secondary" to="/">Return to List</Link>
-                    }
             </div> 
             </div>
        {course !== null ?
