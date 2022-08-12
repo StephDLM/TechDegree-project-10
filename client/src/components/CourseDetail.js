@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useHistory, useParams } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
-import Context from '../Context';
+import { Context } from '../Context';
 import { Buffer } from 'buffer';
 import authenticateUser  from '../Context';
 // import authUser from './Authenticated'
@@ -50,7 +50,7 @@ return(
                             <h3 className="course--detail--title">Course</h3>
                             <h4 className="course--name">{course.title}</h4>
                             <p>By {course.user.firstName} {course.user.lastName}</p>
-                            <p>{course.description}</p>
+                            <ReactMarkdown>{course.description}</ReactMarkdown>
                         </div>
                         <div>
                             <h3 className="course--detail--title">Estimated Time</h3>
@@ -74,7 +74,7 @@ return(
             method: 'DELETE',
             headers: {
                 'Authorization':
-                  "Basic " + Buffer.from(`${authUser.emailAddress}:${authUser.userPassword}`).toString("base64"),
+                  "Basic " + Buffer.from(`${authUser.emailAddress}:${authUser.password}`).toString("base64"),
                 "Content-Type": "application/json"
             },
                 body: null,
@@ -82,7 +82,6 @@ return(
         .then(res => res.json())
         .then (()=> history.push('/'))
         .catch(err => console.log(err));
-        console.log(authenticateUser)
         };
         }
 //delete method inside my fetch ==> how to send a delete request
