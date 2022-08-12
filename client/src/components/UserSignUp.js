@@ -103,6 +103,7 @@ export default class UserSignUp extends Component {
 
     context.data.createUser(user)
       .then( errors => {
+    //if user does not type anything, sets an error state
         if (errors.length) {
           this.setState({ errors });
         } else {
@@ -112,6 +113,7 @@ export default class UserSignUp extends Component {
             });
         }
       })
+      //if user emailAddress or password do not match, catches error
       .catch((err) => {
         console.log(err);
         this.props.history.push('/error');

@@ -17,10 +17,9 @@ export default function CreateCourse({ context }) {
   const [description, setDescription] = useState("");
   const [estimatedTime, setTime] = useState("");
   const [materialsNeeded, setmaterialsNeeded] = useState("");
-  const [errors, errorsNeeded] = useState("");
+  const [errors, setErrors] = useState("");
 
   function handleSubmit() {
-    // const { id } = authUser;
     console.log(authUser);
     const newCourse = {
       title,
@@ -30,9 +29,19 @@ export default function CreateCourse({ context }) {
       userId: authUser.id,
     };
 
-    //function to throw an error when title and description are empty
+    // //function to throw an error when title and description are empty, else send request
+  let Errors = [];
+  if (!title || !description){
+  if (!title) {
+      Errors.push(['Please provide a value for "Title".']);
+      setErrors(Errors);
+  }
+  if (!description) {
+      Errors.push(['Please provide a value for "Description".'])
+      setErrors(Errors);
+  }
+} else {
     //how to send a post request with fetch==> source: https://www.geeksforgeeks.org/get-and-post-method-using-fetch-api/
-    //sending post request to create a course
     fetch("http://localhost:5000/api/courses",{
         // Adding method type
         method: "POST",
@@ -50,22 +59,22 @@ export default function CreateCourse({ context }) {
           else if (res.status === 400) throw errors;
         })
         .then(() => history.push("/"))
+        .then((json) => console.log(json))
 
       // Displaying results to console
       .then((json) => console.log(json))
-      .catch((err) => console.log("Oh noes!", err));
-  }
-  return (
-    <main>
-      <div className="wrap">
-        <h2>Create Course</h2>
-        <div className="validation--errors">
-          <h3>Validation Errors</h3>
-          <ul>
-            <li>Please provide a value for "Title"</li>
-            <li>Please provide a value for "Description"</li>
-          </ul>
-        </div>
+      .catch((err) => {setErrors(err);
+        console.log("Oh noes!", err)
+      })}
+      // let error = [],
+      // if (errors.length)
+      // .catch((err) => console.log("Oh noes!", err));
+  
+}
+return (
+  <main>
+    <div className="wrap">
+      <h2>Create Course</h2>
         <Form
           cancel={cancel}
           errors={errors}

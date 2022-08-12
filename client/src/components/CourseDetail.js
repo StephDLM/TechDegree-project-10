@@ -72,10 +72,9 @@ return (
                         <div>
                             <h3 className="course--detail--title">Estimated Time</h3>
                             <p>{course.estimatedTime}</p>
-
                             <h3 className="course--detail--title">Materials Needed</h3>
                             <ul className="course--detail--list">
-                                <ReactMarkdown>{course.materialsNeeded}</ReactMarkdown>
+                            <ReactMarkdown>{course.materialsNeeded}</ReactMarkdown>
                             </ul>
                         </div>
                     </div>
